@@ -50,8 +50,8 @@ class GovernmentTest < ActiveSupport::TestCase
   end
 
   test "knows the correct current government" do
-    current_government = FactoryGirl.create(:government, name: "2010 to 2015 Conservative and Liberal democrat coalition government", start_date: '2012-05-12')
-    previous_government = FactoryGirl.create(:government, name: "2004 to 2009 Labour government", start_date: '2005-05-06', end_date: '2010-05-11')
+    current_government = FactoryGirl.create(:government, name: "2010 to 2015 Conservative and Liberal democrat coalition government", start_date: '2010-05-12')
+    previous_government = FactoryGirl.create(:government, name: "2005 to 2010 Labour government", start_date: '2005-05-06', end_date: '2010-05-11')
 
     assert_equal current_government, Government.current
   end
