@@ -14,6 +14,12 @@
   <%= form.text_area :body, class: "previewable", rows: 20, cols: 9000, required: form.object.body_required? %>
 
   <%= render partial: "additional_significant_fields", locals: {form: form, edition: form.object} %>
+
+  <% if form.object.previously_published and can?(:mark_political, edition) %>
+    <label class="checkbox political-status">
+      <%= form.check_box :political, label_text: "This document contains content associated with the government" %>
+    </label>
+  <% end %>
 <% end %>
 
 <%= render partial: 'first_published_at', locals: { form: form, edition: edition } %>

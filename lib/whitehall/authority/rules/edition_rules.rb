@@ -6,7 +6,8 @@ module Whitehall::Authority::Rules
         :approve, :publish, :force_publish,
         :reject, :make_fact_check, :review_fact_check,
         :make_editorial_remark, :review_editorial_remark,
-        :limit_access, :unpublish, :export, :confirm_export
+        :limit_access, :unpublish, :export, :confirm_export,
+        :mark_political
       ]
     end
 
@@ -132,7 +133,7 @@ module Whitehall::Authority::Rules
         can_publish?
       when :force_publish
         can_force_publish?
-      when :unpublish
+      when :unpublish, :mark_political
         false
       else
         true
@@ -140,7 +141,12 @@ module Whitehall::Authority::Rules
     end
 
     def managing_editor_can?(action)
-      departmental_editor_can?(action)
+      case action
+      when :mark_political
+        true
+      else
+        departmental_editor_can?(action)
+      end
     end
 
     def world_editor_can?(action)
@@ -149,7 +155,7 @@ module Whitehall::Authority::Rules
 
     def departmental_writer_can?(action)
       case action
-      when :approve, :publish, :unpublish, :force_publish, :reject
+      when :approve, :publish, :unpublish, :force_publish, :reject, :mark_political
         false
       else
         true
