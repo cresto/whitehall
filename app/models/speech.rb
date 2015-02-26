@@ -41,6 +41,10 @@ class Speech < Announcement
     end
   end
 
+  def first_public_at
+    delivered_on
+  end
+
   def translatable?
     !non_english_edition?
   end
