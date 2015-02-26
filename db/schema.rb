@@ -785,8 +785,8 @@ ActiveRecord::Schema.define(version: 20150219115527) do
   add_index "operational_fields", ["slug"], name: "index_operational_fields_on_slug", using: :btree
 
   create_table "organisation_classifications", force: true do |t|
-    t.integer  "organisation_id",                   null: false
-    t.integer  "classification_id",                 null: false
+    t.integer  "organisation_id"# ,                   null: false
+    t.integer  "classification_id"# ,                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "ordering"
@@ -799,8 +799,8 @@ ActiveRecord::Schema.define(version: 20150219115527) do
   add_index "organisation_classifications", ["organisation_id"], name: "index_org_classifications_on_organisation_id", using: :btree
 
   create_table "organisation_mainstream_categories", force: true do |t|
-    t.integer  "organisation_id",                     null: false
-    t.integer  "mainstream_category_id",              null: false
+    t.integer  "organisation_id"# ,                     null: false
+    t.integer  "mainstream_category_id"# ,              null: false
     t.integer  "ordering",               default: 99, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
